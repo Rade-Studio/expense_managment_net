@@ -6,6 +6,26 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/CreditCards": {
+      "get": {
+        "tags": [
+          "CreditCards"
+        ],
+        "operationId": "GetCreditCards",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreditCardsVm"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/TodoItems": {
       "get": {
         "tags": [
@@ -757,6 +777,56 @@
   },
   "components": {
     "schemas": {
+      "CreditCardsVm": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "creditCards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreditCardDto"
+            }
+          }
+        }
+      },
+      "CreditCardDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "interestRate": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "managementFee": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "credit": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "cutOffDay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentDay": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "PaginatedListOfTodoItemBriefDto": {
         "type": "object",
         "additionalProperties": false,
