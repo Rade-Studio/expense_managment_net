@@ -24,6 +24,37 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "CreditCards"
+        ],
+        "operationId": "CreateCreditCard",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCreditCardCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/TodoItems": {
@@ -797,6 +828,40 @@
             "type": "integer",
             "format": "int32"
           },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "interestRate": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "managementFee": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "credit": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "cutOffDay": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paymentDay": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateCreditCardCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
           "userId": {
             "type": "integer",
             "format": "int32"
